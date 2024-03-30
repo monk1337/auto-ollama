@@ -9,13 +9,28 @@ MODEL_NAME=$(echo $GGUF_FILE | sed 's/\(.*\)Q4.*/\1/')
 # Update and install dependencies
 apt-get update
 apt-get install -y screen
-pip install huggingface-hub
+
+# Check if huggingface-hub is installed, and install it if not
+if ! pip show huggingface-hub > /dev/null; then
+  echo "Installing huggingface-hub..."
+  pip3 install huggingface-hub
+else
+  echo "huggingface-hub is already installed."
+fi
+
+
 
 # Download the model
 huggingface-cli download $MODEL_PATH $GGUF_FILE --local-dir downloads --local-dir-use-symlinks False
 
-# Install Ollama
-curl -fsSL https://ollama.com/install.sh | sh
+# Check if Ollama is installed, and install it if not
+if ! command -v ollama &> /dev/null; then
+  echo "Installing Ollama..."
+  curl -fsSL https://ollama.com/install.sh | sh
+else
+  echo "Ollama is already installed."
+fi
+
 
 # Start Ollama in a detached screen
 screen -dmS olla_run bash -c 'ollama serve; exec sh'
