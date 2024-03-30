@@ -12,5 +12,5 @@ wget -O autollama.sh "https://raw.githubusercontent.com/monk1337/auto-ollama/mai
 for example
 
 ```sh
-./script.sh TheBloke/MistralLite-7B-GGUF mistrallite.Q4_K_M.gguf
+./autollama.sh TheBloke/MistralLite-7B-GGUF mistrallite.Q4_K_M.gguf
 ```
