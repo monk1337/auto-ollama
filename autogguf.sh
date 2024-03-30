@@ -60,6 +60,6 @@ done
 
 # Upload all "*.gguf" and "*.md" files
 echo "Uploading files..."
-huggingface-cli upload "${USERNAME}/${MODEL_NAME}-GGUF" "./${MODEL_NAME}"
+huggingface-cli upload "${USERNAME}/${MODEL_NAME}-GGUF" "./${MODEL_NAME}" --private
 
 echo "Script completed."
