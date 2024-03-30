@@ -60,6 +60,9 @@ done
 
 # Upload all "*.gguf" and "*.md" files
 echo "Uploading files..."
-huggingface-cli upload "${USERNAME}/${MODEL_NAME}-GGUF" "./${MODEL_NAME}" --private
+# huggingface-cli upload "${USERNAME}/${MODEL_NAME}-GGUF" "./${MODEL_NAME}" --private
 
+# Uploading .gguf, .md files, and config.json
+echo "Uploading .gguf, .md files, and config.json..."
+find "./${MODEL_NAME}" -type f \( -name "*.gguf" -o -name "*.md" -o -name "config.json" \) -exec bash -c 'huggingface-cli upload "{}" "{}" --private' \;
 echo "Script completed."
