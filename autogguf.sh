@@ -27,12 +27,20 @@ echo "Username: $USERNAME"
 echo "Quantization Methods: ${QUANTIZATION_METHOD_ARRAY[@]}"
 echo "Model Name: $MODEL_NAME"
 
-# Install llama.cpp
-echo "Cloning and setting up llama.cpp..."
-git clone https://github.com/ggerganov/llama.cpp
-cd llama.cpp && git pull && make clean && LLAMA_CUBLAS=1 make
-pip3 install -r requirements.txt
-cd ..
+# Check if llama.cpp is already installed and skip the build step if it is
+if [ ! -d "llama.cpp" ]; then
+    echo "llama.cpp not found. Cloning and setting up..."
+    git clone https://github.com/ggerganov/llama.cpp
+    cd llama.cpp && git pull
+    # Build llama.cpp as it's freshly cloned
+    make clean && LLAMA_CUBLAS=1 make
+    pip3 install -r requirements.txt
+    cd ..
+else
+    echo "llama.cpp found. Assuming it's already built and up to date."
+    # Optionally, still update dependencies
+    # cd llama.cpp && pip3 install -r requirements.txt && cd ..
+fi
 
 # Download model
 echo "Downloading the model..."
