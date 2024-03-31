@@ -1,37 +1,25 @@
 <div align="center">
 <h1>Auto-Ollama</h1>
+<p>Seamlessly Inference Large Language Models (LLMs) Locally with a Single Command</p>
 </div>
 
-Easily run the LLMs locally with a single line of command
+## Overview
 
-# Quick Tour
+Auto-Ollama is a toolkit designed to simplify the inference of Large Language Models (LLMs) directly on your local environment. With an emphasis on ease of use and flexibility, Auto-Ollama supports a wide range of models, providing tools for both direct usage and conversion of models into an efficient format for local deployment.
 
-#### clone the repo
-```
-https://github.com/monk1337/auto-ollama.git
-```
+## Getting Started
 
+### Prerequisites
 
-#### Quick run
+Before you begin, ensure you have the following installed:
+- Git (for cloning the repository)
+- Bash environment (Linux/MacOS terminal or Windows Subsystem for Linux)
+- Python 3.9 or newer
 
-```sh
-./scripts/autollama.sh TheBloke/MistralLite-7B-GGUF mistrallite.Q4_K_M.gguf
-                        [model name]                [quantized file name]
-```
+### Installation
 
+Clone the repository to get started with Auto-Ollama:
 
-# AutoGGUF
-
-#### If the quantized model is not available on hugginface?
-
-convert any hf model into gguf and upload to hf model hub
-
-
-#### now run the script
-Provide MODEL_ID USERNAME TOKEN [QUANTIZATION_METHODS] args, where  QUANTIZATION_METHODS is optional
-for example
-
-```sh
-./scripts/autogguf.sh aaditya/some_sota_model user_name hf_token
-```
-
+```bash
+git clone https://github.com/monk1337/auto-ollama.git
+cd auto-ollama
