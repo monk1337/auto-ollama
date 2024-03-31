@@ -21,7 +21,7 @@ show_art
 
 MODEL_PATH="$1"
 GGUF_FILE="$2"
-MODEL_NAME=$(echo $GGUF_FILE | sed 's/\(.*\)Q4.*/\1/')
+MODEL_NAME=$(echo $GGUF_FILE | sed 's/\(.*\)\.Q4.*/\1/')
 
 # Update and install dependencies
 apt-get update
@@ -41,6 +41,12 @@ function is_model_downloaded {
 # Log the downloaded model
 function log_downloaded_model {
     echo "$LOGGING_NAME" >> "$DOWNLOAD_LOG"
+}
+
+# Function to check if the model has already been created
+function is_model_created {
+    # 'ollama list' lists all models
+    ollama list | grep -q "$MODEL_NAME" && return 0 || return 1
 }
 
 # Check if huggingface-hub is installed, and install it if not
@@ -73,29 +79,39 @@ else
   echo "Ollama is already installed."
 fi
 
+# Check if Ollama is already running
+if pgrep -f 'ollama serve' > /dev/null; then
+    echo "Ollama is already running. Skipping the start."
+else
+    echo "Starting Ollama..."
+    # Start Ollama in a detached screen
+    screen -dmS olla_run bash -c 'ollama serve; exec sh'
 
-# Start Ollama in a detached screen
-screen -dmS olla_run bash -c 'ollama serve; exec sh'
+    # Wait for Ollama to start
+    while true; do
+        if pgrep -f 'ollama serve' > /dev/null; then
+            echo "Ollama has started."
+            break
+        else
+            echo "Waiting for Ollama to start..."
+            sleep 1 # Wait for 1 second before checking again
+        fi
+    done
+fi
 
-# # Add a sleep delay here for a specified number of seconds, e.g., 5 seconds
-# sleep 60
 
-# Check if Ollama has started and echo a message
-while true; do
-    # Check if Ollama process is running
-    if pgrep -f 'ollama serve' > /dev/null; then
-        echo "Ollama has started."
-        break
-    else
-        echo "Waiting for Ollama to start..."
-        sleep 1 # Wait for 1 second before checking again
-    fi
-done
 
-# Prepare Modelfile with the downloaded path
-echo "FROM ./downloads/$GGUF_FILE" > Modelfile
+# Check if the model has already been created
+if is_model_created; then
+    echo "Model $MODEL_NAME is already created. Skipping creation."
+else
+    echo "Creating model $MODEL_NAME..."
+    # Create the model in Ollama
+    # Prepare Modelfile with the downloaded path
+    echo "FROM ./downloads/$GGUF_FILE" > Modelfile
+    ollama create $MODEL_NAME -f Modelfile
+    echo "Model $MODEL_NAME created."
+fi
 
-# Create and run the model in Ollama
-ollama create $MODEL_NAME -f Modelfile
 echo "model name is > $MODEL_NAME"
 ollama run $MODEL_NAME
