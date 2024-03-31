@@ -50,10 +50,10 @@ fi
 
 # Check if sentencepiece is installed, and install it if not
 if ! pip show sentencepiece > /dev/null; then
-  echo "Installing numpy..."
+  echo "Installing sentencepiece..."
   pip3 install sentencepiece
 else
-  echo "numpy is already installed."
+  echo "sentencepiece is already installed."
 fi
 
 # Check if llama.cpp is already installed and skip the build step if it is
