@@ -41,14 +41,13 @@ If your desired model is not available in a quantized format suitable for local 
 # Convert your Hugging Face model to GGUF format for local deployment
 # Usage:
 # ./scripts/autogguf.sh -m <MODEL_ID> [-u USERNAME] [-t TOKEN] [-q QUANTIZATION_METHODS]
+
+# Example command:
+./scripts/autogguf.sh -m unsloth/gemma-2b
 ```
 
 ### More Options
 ```bash
-# Example command:
-./scripts/autogguf.sh -m unsloth/gemma-2b
-
-
 # if want to upload the gguf model to hub after the conversion, provide the user and token
 # Example command:
 ./scripts/autogguf.sh -m unsloth/gemma-2b -u user_name -t hf_token
