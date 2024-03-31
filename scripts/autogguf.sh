@@ -1,4 +1,5 @@
 #!/bin/bash
+#Inspired from mlabonne autogguf work with modifications
 
 cat << "EOF"
  $$$$$$\  $$\   $$\ $$$$$$$$\  $$$$$$\           $$$$$$\   $$$$$$\  $$\   $$\ $$$$$$$$\ 
