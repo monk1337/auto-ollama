@@ -27,6 +27,22 @@ MODEL_NAME=$(echo $GGUF_FILE | sed 's/\(.*\)Q4.*/\1/')
 apt-get update
 apt-get install -y screen
 
+# Log file where downloaded models are recorded
+DOWNLOAD_LOG="downloaded_models.log"
+
+# Composite logging name
+LOGGING_NAME="${MODEL_PATH}_${MODEL_NAME}"
+
+# Check if the model has been downloaded
+function is_model_downloaded {
+    grep -qxF "$LOGGING_NAME" "$DOWNLOAD_LOG" && return 0 || return 1
+}
+
+# Log the downloaded model
+function log_downloaded_model {
+    echo "$LOGGING_NAME" >> "$DOWNLOAD_LOG"
+}
+
 # Check if huggingface-hub is installed, and install it if not
 if ! pip show huggingface-hub > /dev/null; then
   echo "Installing huggingface-hub..."
@@ -35,10 +51,19 @@ else
   echo "huggingface-hub is already installed."
 fi
 
+# Check if the model has already been downloaded
+if is_model_downloaded; then
+    echo "Model $LOGGING_NAME has already been downloaded. Skipping download."
+else
+    echo "Downloading model $LOGGING_NAME..."
+    # Download the model
+    huggingface-cli download $MODEL_PATH $GGUF_FILE --local-dir downloads --local-dir-use-symlinks False
+    
+    # Log the downloaded model
+    log_downloaded_model
+    echo "Model $LOGGING_NAME downloaded and logged."
+fi
 
-
-# Download the model
-huggingface-cli download $MODEL_PATH $GGUF_FILE --local-dir downloads --local-dir-use-symlinks False
 
 # Check if Ollama is installed, and install it if not
 if ! command -v ollama &> /dev/null; then
