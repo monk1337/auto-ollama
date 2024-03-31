@@ -25,12 +25,13 @@ Use the autollama.sh script to quickly inference LLMs. This script requires the 
 ```bash
 # Deploy Large Language Models (LLMs) locally with Auto-Ollama
 # Usage:
-# ./scripts/autollama.sh <model name> <quantized file name>
+# ./scripts/autollama.sh -m <model path> -g <gguf file name>
 
 
 # Example command:
-./scripts/autollama.sh TheBloke/MistralLite-7B-GGUF mistrallite.Q4_K_M.gguf
+./scripts/autollama.sh -m TheBloke/MistralLite-7B-GGUF -g mistrallite.Q4_K_M.gguf
 ```
+
 
 
 ### Handling Non-Quantized Models with AutoGGUF
@@ -39,11 +40,15 @@ If your desired model is not available in a quantized format suitable for local 
 ```bash
 # Convert your Hugging Face model to GGUF format for local deployment
 # Usage:
-# ./scripts/autogguf.sh <MODEL_ID> <USERNAME> <TOKEN> [QUANTIZATION_METHODS (optional)]
+# ./scripts/autogguf.sh -m <MODEL_ID> [-u USERNAME] [-t TOKEN] [-q QUANTIZATION_METHODS]
 
 
 # Example command:
-./scripts/autogguf.sh aaditya/some_sota_model user_name hf_token
+./scripts/autogguf.sh -m unsloth/gemma-2b
+
+
+# if want to upload the gguf model hub after conversion, provide the user and token
+./scripts/autogguf.sh -m unsloth/gemma-2b -u user_name -t hf_token
 ```
 
 ## Quantization Recommendations
