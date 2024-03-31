@@ -1,4 +1,4 @@
-# auto-ollama
+# Auto-ollama
 run ollama easily
 
 
