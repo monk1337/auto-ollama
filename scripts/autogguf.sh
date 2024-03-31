@@ -40,7 +40,7 @@ echo "Username: $USERNAME"
 echo "Quantization Methods: ${QUANTIZATION_METHOD_ARRAY[@]}"
 echo "Model Name: $MODEL_NAME"
 
-# Check if huggingface-hub is installed, and install it if not
+# Check if numpy is installed, and install it if not
 if ! pip show numpy > /dev/null; then
   echo "Installing numpy..."
   pip3 install numpy
