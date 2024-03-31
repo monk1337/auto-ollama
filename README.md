@@ -13,6 +13,11 @@ Auto-Ollama is a toolkit designed to simplify the inference of Large Language Mo
 
 Clone the repository to get started with Auto-Ollama:
 
+```bash
+git clone https://github.com/monk1337/auto-ollama.git
+cd auto-ollama
+```
+
 ### Quick Tour
 Running Auto-Ollama
 Use the autollama.sh script to quickly inference LLMs. This script requires the model name and the quantized file name as arguments.
