@@ -23,8 +23,15 @@ Running Auto-Ollama
 Use the autollama.sh script to quickly inference LLMs. This script requires the model name and the quantized file name as arguments.
 
 ```bash
-./scripts/autollama.sh [model name] [quantized file name]
-# Example:
+# Deploy Large Language Models (LLMs) locally with Auto-Ollama
+# Usage:
+# ./scripts/autollama.sh <model name> <quantized file name>
+#     |                   |                |
+#     |                   |                └─➤ The file name of the quantized model (e.g., mistrallite.Q4_K_M.gguf)
+#     |                   └─➤ The name of the model on Hugging Face (e.g., TheBloke/MistralLite-7B-GGUF)
+#     └─➤ Script to run
+
+# Example command:
 ./scripts/autollama.sh TheBloke/MistralLite-7B-GGUF mistrallite.Q4_K_M.gguf
 ```
 
