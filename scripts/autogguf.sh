@@ -53,7 +53,7 @@ if [ ! -d "llama.cpp" ]; then
         echo "nvcc could not be found, building llama without LLAMA_CUBLAS"
         make clean && make
     else
-        make clean && LLAMA_CUBLAD=1 make
+        make clean && LLAMA_CUBLAS=1 make
     fi
     cd ..
 else
