@@ -1,11 +1,11 @@
 <div align="center">
 <h1>Auto-Ollama</h1>
-<p>Inference Large Language Models (LLMs) Locally with a Single Command</p>
+<p>Inference or Quantize Large Language Models (LLMs) Locally with a Single Command</p>
 </div>
 
 ## Overview
 
-Auto-Ollama is a toolkit designed to simplify the inference of Large Language Models (LLMs) directly on your local environment. With an emphasis on ease of use and flexibility, Auto-Ollama supports both direct usage and conversion of models into an efficient format for local deployment.
+Auto-Ollama is a toolkit designed to simplify the inference or Quantization of Large Language Models (LLMs) directly on your local environment. With an emphasis on ease of use and flexibility, Auto-Ollama supports both direct usage and conversion of models into an efficient format for local deployment.
 
 ## Getting Started
 
