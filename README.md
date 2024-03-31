@@ -49,6 +49,10 @@ If your desired model is not available in a quantized format suitable for local 
 
 # if want to upload the gguf model to hub after the conversion, provide the user and token
 ./scripts/autogguf.sh -m unsloth/gemma-2b -u user_name -t hf_token
+
+
+#if wants to provide QUANTIZATION_METHODS 
+./scripts/autogguf.sh -m unsloth/gemma-2b -u user_name -t hf_token -q "q4_k_m,q5_k_m"
 ```
 
 ## Quantization Recommendations
