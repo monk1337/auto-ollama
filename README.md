@@ -14,8 +14,16 @@ Auto-Ollama is a toolkit designed to simplify the inference of Large Language Mo
 Clone the repository to get started with Auto-Ollama:
 
 ```bash
-git clone https://github.com/monk1337/auto-ollama.git
-cd auto-ollama
+# Deploy Large Language Models (LLMs) locally with Auto-Ollama
+# Usage:
+# ./scripts/autollama.sh <model name> <quantized file name>
+#     |                   |                |
+#     |                   |                └─➤ The file name of the quantized model (e.g., mistrallite.Q4_K_M.gguf)
+#     |                   └─➤ The name of the model on Hugging Face (e.g., TheBloke/MistralLite-7B-GGUF)
+#     └─➤ Script to run
+
+# Example command:
+./scripts/autollama.sh TheBloke/MistralLite-7B-GGUF mistrallite.Q4_K_M.gguf
 ```
 
 ### Quick Tour
