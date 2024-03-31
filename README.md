@@ -35,21 +35,16 @@ If your desired model is not available in a quantized format suitable for local 
 # Convert your Hugging Face model to GGUF format for local deployment
 # Usage:
 # ./scripts/autogguf.sh <MODEL_ID> <USERNAME> <TOKEN> [QUANTIZATION_METHODS (optional)]
-#     |                |         |          |              |
-#     |                |         |          |              └─➤ Optional: Specify quantization methods (e.g., Q4_K_M)
-#     |                |         |          └─➤ Your Hugging Face API Token for authentication
-#     |                |         └─➤ Your Hugging Face username
-#     |                └─➤ The model ID on Hugging Face (e.g., aaditya/some_sota_model)
-#     └─➤ Script to run
+
 
 # Example command:
 ./scripts/autogguf.sh aaditya/some_sota_model user_name hf_token
 ```
 
 ## Quantization Recommendations
-- Use Q5_K_M for the best performance-resource balance.
-- Q4_K_M is a good choice if you need to save memory.
-- K_M versions generally perform better than K_S.
+- **Use Q5_K_M** for the best performance-resource balance.
+- **Q4_K_M** is a good choice if you need to save memory.
+- **K_M** versions generally perform better than K_S.
 
 ### Support and Contributions
 For issues, suggestions, or contributions, please open an issue or pull request in the GitHub repository. We welcome contributions from the community to make Auto-Ollama even better!
