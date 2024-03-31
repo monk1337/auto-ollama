@@ -45,9 +45,16 @@ if [ ! -d "llama.cpp" ]; then
     echo "llama.cpp not found. Cloning and setting up..."
     git clone https://github.com/ggerganov/llama.cpp
     cd llama.cpp && git pull
-    # Build llama.cpp as it's freshly cloned
-    make clean && LLAMA_CUBLAS=1 make
+    # Install required packages
     pip3 install -r requirements.txt
+    # Build llama.cpp as it's freshly cloned
+    if ! command -v nvcc &> /dev/null
+    then
+        echo "nvcc could not be found, building llama without LLAMA_CUBLAS"
+        make clean && make
+    else
+        make clean && LLAMA_CUBLAD=1 make
+    fi
     cd ..
 else
     echo "llama.cpp found. Assuming it's already built and up to date."
