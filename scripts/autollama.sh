@@ -25,35 +25,51 @@ GGUF_FILE=""
 
 # Display help/usage information
 usage() {
-  echo "Usage: $0 --model-path <path> --gguf-file <file>"
+  echo "Usage: $0 -m <model_path> -g <gguf_file>"
   echo
   echo "Options:"
-  echo "  --model-path <path>     Set the path to the model"
-  echo "  --gguf-file <file>      Set the GGUF file name"
-  echo "  -h, --help              Display this help and exit"
+  echo "  -m <model_path>    Set the path to the model"
+  echo "  -g <gguf_file>     Set the GGUF file name"
+  echo "  -h                 Display this help and exit"
   echo
 }
 
 # Parse command-line options
-while [[ "$#" -gt 0 ]]; do
-    case $1 in
-        --model-path) MODEL_PATH="$2"; shift ;;
-        --gguf-file) GGUF_FILE="$2"; shift ;;
-        -h|--help) usage; exit 0 ;;
-        *) echo "Unknown parameter passed: $1"; usage; exit 1 ;;
-    esac
-    shift
+while getopts ":m:g:h" opt; do
+  case ${opt} in
+    m )
+      MODEL_PATH=$OPTARG
+      ;;
+    g )
+      GGUF_FILE=$OPTARG
+      ;;
+    h )
+      usage
+      exit 0
+      ;;
+    \? )
+      echo "Invalid Option: -$OPTARG" 1>&2
+      usage
+      exit 1
+      ;;
+    : )
+      echo "Invalid Option: -$OPTARG requires an argument" 1>&2
+      usage
+      exit 1
+      ;;
+  esac
 done
 
 # Check required parameters
 if [ -z "$MODEL_PATH" ] || [ -z "$GGUF_FILE" ]; then
-    echo "Error: --model-path and --gguf-file are required."
+    echo "Error: -m (model_path) and -g (gguf_file) are required."
     usage
     exit 1
 fi
 
 # Derive MODEL_NAME
 MODEL_NAME=$(echo $GGUF_FILE | sed 's/\(.*\)\.Q4.*/\1/')
+
 
 # Check if 'screen' is installed
 if ! command -v screen &> /dev/null; then
