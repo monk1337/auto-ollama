@@ -9,13 +9,6 @@ Auto-Ollama is a toolkit designed to simplify the inference of Large Language Mo
 
 ## Getting Started
 
-### Prerequisites
-
-Before you begin, ensure you have the following installed:
-- Git (for cloning the repository)
-- Bash environment (Linux/MacOS terminal or Windows Subsystem for Linux)
-- Python 3.9 or newer
-
 ### Installation
 
 Clone the repository to get started with Auto-Ollama:
