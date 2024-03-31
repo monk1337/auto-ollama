@@ -23,9 +23,15 @@ MODEL_PATH="$1"
 GGUF_FILE="$2"
 MODEL_NAME=$(echo $GGUF_FILE | sed 's/\(.*\)\.Q4.*/\1/')
 
-# Update and install dependencies
-apt-get update
-apt-get install -y screen
+# Check if 'screen' is installed
+if ! command -v screen &> /dev/null; then
+    echo "'screen' is not installed. Proceeding with installation..."
+    # Update and install 'screen'
+    apt-get update
+    apt-get install -y screen
+else
+    echo "'screen' is already installed."
+fi
 
 # Log file where downloaded models are recorded
 DOWNLOAD_LOG="downloaded_models.log"
