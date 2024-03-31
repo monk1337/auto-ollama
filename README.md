@@ -13,6 +13,10 @@ Auto-Ollama is a toolkit designed to simplify the inference of Large Language Mo
 
 Clone the repository to get started with Auto-Ollama:
 
+### Quick Tour
+Running Auto-Ollama
+Use the autollama.sh script to quickly inference LLMs. This script requires the model name and the quantized file name as arguments.
+
 ```bash
 # Deploy Large Language Models (LLMs) locally with Auto-Ollama
 # Usage:
@@ -23,20 +27,6 @@ Clone the repository to get started with Auto-Ollama:
 #     └─➤ Script to run
 
 # Example command:
-./scripts/autollama.sh TheBloke/MistralLite-7B-GGUF mistrallite.Q4_K_M.gguf
-```
-
-### Quick Tour
-Running Auto-Ollama
-Use the autollama.sh script to quickly inference LLMs. This script requires the model name and the quantized file name as arguments.
-
-```bash
-# Use this command to deploy an LLM locally:
-# ./scripts/autollama.sh <model name>            <quantized file name>
-#                         ┌───────────┐          ┌────────────────────┐
-#                         │ model name│          │quantized file name │
-#                         └───────────┘          └────────────────────┘
-# Example:
 ./scripts/autollama.sh TheBloke/MistralLite-7B-GGUF mistrallite.Q4_K_M.gguf
 ```
 
