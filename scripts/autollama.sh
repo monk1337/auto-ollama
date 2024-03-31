@@ -52,6 +52,21 @@ fi
 # Start Ollama in a detached screen
 screen -dmS olla_run bash -c 'ollama serve; exec sh'
 
+# # Add a sleep delay here for a specified number of seconds, e.g., 5 seconds
+# sleep 60
+
+# Check if Ollama has started and echo a message
+while true; do
+    # Check if Ollama process is running
+    if pgrep -f 'ollama serve' > /dev/null; then
+        echo "Ollama has started."
+        break
+    else
+        echo "Waiting for Ollama to start..."
+        sleep 1 # Wait for 1 second before checking again
+    fi
+done
+
 # Prepare Modelfile with the downloaded path
 echo "FROM ./downloads/$GGUF_FILE" > Modelfile
 
