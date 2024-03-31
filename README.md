@@ -1,11 +1,11 @@
 <div align="center">
 <h1>Auto-Ollama</h1>
-<p>Seamlessly Inference Large Language Models (LLMs) Locally with a Single Command</p>
+<p>Inference Large Language Models (LLMs) Locally with a Single Command</p>
 </div>
 
 ## Overview
 
-Auto-Ollama is a toolkit designed to simplify the inference of Large Language Models (LLMs) directly on your local environment. With an emphasis on ease of use and flexibility, Auto-Ollama supports a wide range of models, providing tools for both direct usage and conversion of models into an efficient format for local deployment.
+Auto-Ollama is a toolkit designed to simplify the inference of Large Language Models (LLMs) directly on your local environment. With an emphasis on ease of use and flexibility, Auto-Ollama supports both direct usage and conversion of models into an efficient format for local deployment.
 
 ## Getting Started
 
@@ -21,10 +21,7 @@ Use the autollama.sh script to quickly inference LLMs. This script requires the 
 # Deploy Large Language Models (LLMs) locally with Auto-Ollama
 # Usage:
 # ./scripts/autollama.sh <model name> <quantized file name>
-#     |                   |                |
-#     |                   |                └─➤ The file name of the quantized model (e.g., mistrallite.Q4_K_M.gguf)
-#     |                   └─➤ The name of the model on Hugging Face (e.g., TheBloke/MistralLite-7B-GGUF)
-#     └─➤ Script to run
+
 
 # Example command:
 ./scripts/autollama.sh TheBloke/MistralLite-7B-GGUF mistrallite.Q4_K_M.gguf
