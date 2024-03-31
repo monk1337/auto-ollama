@@ -40,6 +40,14 @@ echo "Username: $USERNAME"
 echo "Quantization Methods: ${QUANTIZATION_METHOD_ARRAY[@]}"
 echo "Model Name: $MODEL_NAME"
 
+# Check if huggingface-hub is installed, and install it if not
+if ! pip show numpy > /dev/null; then
+  echo "Installing numpy..."
+  pip3 install numpy
+else
+  echo "numpy is already installed."
+fi
+
 # Check if llama.cpp is already installed and skip the build step if it is
 if [ ! -d "llama.cpp" ]; then
     echo "llama.cpp not found. Cloning and setting up..."
