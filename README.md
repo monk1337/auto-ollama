@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Auto-Ollama & AutoQuantLLM ⚡️ </h1>
+<h1>Auto-Ollama & AutoGGUF ⚡️ </h1>
 <p>Inference or Quantize Large Language Models (LLMs) Locally with a Single Command</p>
 </div>
 
