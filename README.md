@@ -7,6 +7,8 @@
 
 Auto-Ollama is a toolkit designed to simplify the inference or Quantization of Large Language Models (LLMs) directly on your local environment. With an emphasis on ease of use and flexibility, Auto-Ollama supports both direct usage and conversion of models into an efficient format for local deployment.
 
+For quantization, check out the new package called [Auto-QuantLLM ⚡️](https://github.com/monk1337/AutoQuantLLM/tree/main). It's currently under development, but it aims to provide a streamlined and user-friendly approach to quantizing large language models (LLMs) with different Quantization methods.
+
 ## Getting Started
 
 ### Installation
