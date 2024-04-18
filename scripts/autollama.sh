@@ -145,6 +145,7 @@ else
     while true; do
         if pgrep -f 'ollama serve' > /dev/null; then
             echo "Ollama has started."
+            sleep 60
             break
         else
             echo "Waiting for Ollama to start..."
